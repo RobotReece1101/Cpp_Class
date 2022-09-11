@@ -29,6 +29,7 @@ int main()
     float cashFromPennies;
     float totCash;
     // Front Panel display
+
     /*
     cout << "###############################################" << endl;
     cout << "#" << endl;

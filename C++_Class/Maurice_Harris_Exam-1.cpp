@@ -33,7 +33,7 @@ int main()
     cout << "#" << endl;
     cout << "#" << endl;
     cout << "#      Thanks For using Reece's Coin Counter Ver 1.0.1" << endl;
-    cout << "#      Written By Robot Reece1101 9/10/2022" << endl;
+    cout << "#      Written By Robot Reece1101 9/11/2022" << endl;
     cout << "#" << endl;
     cout << "#" << endl;
     cout << "###############################################" << endl << endl << endl;

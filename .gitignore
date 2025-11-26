@@ -1,2 +1,5 @@
 helloworld/.vscode/c_cpp_properties.json
 helloworld/.vscode/settings.json
+
+# explicit recursive ignore for Debug folders
+**/[Dd]ebug/

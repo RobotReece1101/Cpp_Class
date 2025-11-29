@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 /*
-To build the program:  Gcc box1.c -o .\Debug\box1.exe
-To run the program:   .\Debug\box1.exe
+To build the program:  Gcc 1vars_func_math.c -o .\Debug\1vars_func_math.exe
+To run the program:   .\Debug\1vars_func_math.exe
 */
 
 //////////////////////////////////////////////////////////////////////////

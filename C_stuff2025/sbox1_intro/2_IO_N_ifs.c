@@ -25,6 +25,12 @@ void getc_getting_my_chars();
 void putchar_printing_my_chars();
 // A function for storing strings as char arrays
 void storing_strings();
+// A function for using scanf and storing strings as char arrays
+void scanning_n_storing_strings();
+// A function for working with scanf to get a other varaible types that require the & operator
+void scanning_n_storing_other_stuff();
+// A function for working with fgets to storing strings
+void fgets_4_storing_strings();
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -66,7 +72,7 @@ int main()
 
     ////////////////////////////////////////////////
     my_new_section("Storing strings as char arrays");
-    enable_feature = 1;
+    enable_feature = 0;
     if (enable_feature)
         {
             storing_strings();
@@ -74,7 +80,33 @@ int main()
 
     ////////////////////////////////////////////////
 
+    my_new_section("Scanf and Storing strings as char arrays");
+    enable_feature = 0;
+    if (enable_feature)
+        {
+            scanning_n_storing_strings();
+        }
+
     ////////////////////////////////////////////////
+
+    my_new_section("Scanf and Storing other var types");
+    enable_feature = 0;
+    if (enable_feature)
+        {
+            scanning_n_storing_other_stuff();
+        }
+
+    ////////////////////////////////////////////////
+
+    my_new_section("fgets to read strings from input");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            fgets_4_storing_strings();
+        }
+
+    ////////////////////////////////////////////////
+
     start_n_endprints();
     return 0;
 }
@@ -157,6 +189,45 @@ void storing_strings()
     char prompt[] = "Press the 'Enter' key to DESTROY EVERYTHING!!!!!:";
     printf("%s\n", prompt);
     getchar();
-    printf("All Hard Drives are now being erased.  Enjoy the fresh start B)... \n");
+    printf("All Hard Drives are now being erased.\nEnjoy the fresh start B)... \n");
 }
 
+// A function for working with scanf to get a char array more specifically a string
+void scanning_n_storing_strings()
+{
+    char f_name[15];
+    char l_name[20];
+    printf("What is your first name? ");
+    // this usage of scanf when caputing a char array dosent't need the & operator to prefix the variable
+    scanf("%14s", f_name); // limit input to 14 chars to leave space for null terminator
+    printf("What is your last name? ");
+    scanf("%19s", l_name); // limit input to 14 chars to leave space for null terminator
+
+    printf("Nice to meet you <%s %s>...\n", f_name, l_name);
+}
+
+// A function for working with scanf to get a char array more specifically a string
+void scanning_n_storing_other_stuff()
+{
+    int magic_int;
+    float magic_float;
+
+    printf("What's the magic int'? ");
+    // this usage of scanf needs the & operator to prefix the variable
+    scanf("%d", &magic_int);
+    printf("What's the magic float'? ");
+    scanf("%f", &magic_float);
+
+    printf("Here is the magic int  <%d>...\n", magic_int);
+    printf("Here is the magic float  <%f>...\n", magic_float);
+}
+
+// A function for working with fgets to storing strings
+void fgets_4_storing_strings()
+{   
+    char name[10];
+    printf("What is your first name? \n");
+    fgets(name,10,stdin); // If we input a value shorter than 9 chars, it will include the newline char. we should use a dynamic way to get one less than max size to avoid that.
+
+    printf("Nice to meet you <%s>...\n", name);
+}

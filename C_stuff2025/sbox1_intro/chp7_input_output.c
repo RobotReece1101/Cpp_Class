@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 /*
-To build the program:  Gcc 2_IO_N_ifs.c -o .\Debug\2_IO_N_ifs.exe
-To run the program:   .\Debug\2_IO_N_ifs.exe
+To build the program:  Gcc chp7_input_output.c -o .\Debug\chp7_input_output.exe
+To run the program:   .\Debug\chp7_input_output.exe
 */
 
 //////////////////////////////////////////////////////////////////////////

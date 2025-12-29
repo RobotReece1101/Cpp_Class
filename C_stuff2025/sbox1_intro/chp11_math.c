@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*
 To build the program:  Gcc chp11_math.c -o .\Debug\chp11_math.exe
@@ -13,22 +14,24 @@ To run the program:   .\Debug\chp11_math.exe
 void start_n_endprints();
 // Helper function to print new section with passed in section name
 void my_new_section(char section_name[]);
+// Helper function to get a dynamic seed value by uising the time function
+int get_seed();
 //////////////////////////////////////////////////////////////////////////
 
 // function prototypes for this module
 
-// A function for getting chars
-void get_my_chars();
-// A function for getting chars using getc(stdin)
-// void getc_getting_my_chars();
-// A function for putting chars using putchar()
-// void putchar_printing_my_chars();
-// A function for storing strings as char arrays
-// void storing_strings();
-// A function for using scanf and storing strings as char arrays
-// void scanning_n_storing_strings();
-// A function for working with scanf to get a other varaible types that require the & operator
-// void scanning_n_storing_other_stuff();
+// A function for couting up and down
+void count_up_down();
+// A function for seeing what comes first in math
+void whats_first();
+// A function playing with remainders()
+void finding_remainder();
+// A function for a random number generator
+void rando_gen();
+// A function random number generator with a fixed seed
+void rando_gen_seeded();
+// A function a random number generator with dynamic seed
+void rando_gen_dynamic_seed();
 // A function for working with fgets to storing strings
 // void fgets_4_storing_strings();
 
@@ -47,54 +50,54 @@ int main()
     start_n_endprints();
     ////////////////////////////////////////////////
 
-    my_new_section("Getting Characters from User Input, with getchar()");
-    enable_feature = 0;
+    my_new_section("Counting up, and down");
+    enable_feature = 1;
     if (enable_feature)
         {
-            get_my_chars();
+            count_up_down();
+        }
+
+    //////////////////////////////////////////////
+    my_new_section("Whats first????");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            whats_first();
         }
 
     ////////////////////////////////////////////////
-    // my_new_section("Getting Characters from User Input, with getc(stdin)");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         getc_getting_my_chars();
-    //     }
+    my_new_section("Remainder using modulus operator (%)");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            finding_remainder();
+        }
 
-    // ////////////////////////////////////////////////
-    // my_new_section("Using the putchar() function to output chars");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         putchar_printing_my_chars();
-    //     }
+    ////////////////////////////////////////////////
+    my_new_section("Random Num Generation");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            rando_gen();
+        }
 
-    // ////////////////////////////////////////////////
-    // my_new_section("Storing strings as char arrays");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         storing_strings();
-    //     }
+    ////////////////////////////////////////////////
 
-    // ////////////////////////////////////////////////
+    my_new_section("Random Num Generation with seed");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            rando_gen_seeded();
+        }
 
-    // my_new_section("Scanf and Storing strings as char arrays");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         scanning_n_storing_strings();
-    //     }
+    ////////////////////////////////////////////////
 
-    // ////////////////////////////////////////////////
-
-    // my_new_section("Scanf and Storing other var types");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         scanning_n_storing_other_stuff();
-    //     }
+    my_new_section("Random Num Generation with dynamic seed");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            rando_gen_dynamic_seed();
+        }
 
     // ////////////////////////////////////////////////
 
@@ -111,7 +114,9 @@ int main()
     return 0;
 }
 
-
+/////////////////////////////////////////////////////////////
+// Helper Functions for this module
+/////////////////////////////////////////////////////////////
 
 void start_n_endprints()
 {
@@ -127,100 +132,180 @@ void my_new_section(char sect_name[])
     printf("\n");
 }
 
+int get_seed()
+{
+    return (unsigned) time(NULL);
+}
+
 /////////////////////////////////////////////////////////////
 // Functions for this module
 /////////////////////////////////////////////////////////////
 
 // A function for getting chars
-void get_my_chars()
+void count_up_down()
 {
-    int my_char;
+    int x;
 
-    printf("Just waiting for a character: ...  ");
-    my_char = getchar(); // waits for user to input a character
-    printf("You entered:< %c > , Thanks for giving me something!!!\n", my_char);
-    printf("You entered:< %d > , This actual the interger representation of that char you gave me. B)... \n", my_char);
+    for (x=-5; x<=5; x++)
+    {
+        printf("Counting up: %d\n", x);
+    }
+
+
+    for (x=5; x>=-5; x--)
+    {
+        printf("Counting down: %d\n", x);
+    }
+
 }
 
-// // A function for getting chars using getc(stdin)
-// void getc_getting_my_chars()
-// {
-//     int q;
-//     int w;
-//     int e;
+// A function for getting chars using getc(stdin)
+void whats_first()
+{
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    int d = 0;
 
-//     printf("Just waiting for a  3 character: ...  ");
-//     getc(stdin); // This will consume the newline character left in the input buffer, otherwise I would miss one of my chars
-//     q = getc(stdin); // waits for user to input a character
-//     w = getc(stdin); // waits for user to input a character
-//     e = getc(stdin); // waits for user to input a character
-//     printf("You entered: < %c > , < %c >, < %c > Thanks for giving me something!!!\n", q,w,e);
-// }
+    b= 16;
+    printf("Before assignment: a is unassigned < %d >, and b is < %d > \n", a,b);
+    printf("Here is the odd calulation we are using a=b++ \n");
+    a=b++;
+    printf("After assignment with post-increment: a is < %d >, and b is < %d > \n", a,b);
 
-// // A function for putting chars using putchar()
-// void putchar_printing_my_chars()
-// {
-//     int ch;
+    printf("\n");
+    printf("\\\\\\\\\\\\Switching things around to preincrement the value\\\\\\\\\\\\\\\\\\\\\\\\\n");
+    printf("\n");
 
-//     printf("Using putchar to print characters\n");
-//     printf("Press Enter:  ");
-//     getchar(); 
-//     ch = 'H';
-//     putchar(ch);
-//     ch = 'i';
-//     putchar(ch);
-//     ch = '!';
-//     putchar(ch);
-//     putchar('\n');
+    c= 16;
+    printf("Before assignment: d is unassigned < %d >, and c is < %d > \n", d,c);
+    printf("Here is the odd calulation we are using d=++c \n");
+    d=++c;
+    printf("After assignment with post-increment: d is < %d >, and c is < %d > \n", d,c);
 
-//     ////////////////////////////////////////////////
-//     my_new_section("char storage and manipulation");
-//     char a,b,c,d;
-//     a = 'W';
-//     b = a + 24;
-//     c = b + 8;
-//     d = '\n';
-//     printf("%c%c%c%c", a,b,c,d);
-// }
+}
 
-// // A function for storing strings as char arrays
-// void storing_strings()
-// {
-//     char prompt[] = "Press the 'Enter' key to DESTROY EVERYTHING!!!!!:";
-//     printf("%s\n", prompt);
-//     getchar();
-//     printf("All Hard Drives are now being erased.\nEnjoy the fresh start B)... \n");
-// }
+// A function for putting chars using putchar()
+void finding_remainder()
+{
+    // const int value =5;
+    int value =5;
 
-// // A function for working with scanf to get a char array more specifically a string
-// void scanning_n_storing_strings()
-// {
-//     char f_name[15];
-//     char l_name[20];
-//     printf("What is your first name? ");
-//     // this usage of scanf when caputing a char array dosent't need the & operator to prefix the variable
-//     scanf("%14s", f_name); // limit input to 14 chars to leave space for null terminator
-//     printf("What is your last name? ");
-//     scanf("%19s", l_name); // limit input to 14 chars to leave space for null terminator
+    int a;  
 
-//     printf("Nice to meet you <%s %s>...\n", f_name, l_name);
-// }
+    printf("Finding numbers divisable by our Modulus which is ... <%d>:\n", value);
+    for (a=0; a<=30; a++)
+    {
+        printf("The remainder of %d / %d is: %d\n", a, value, a % value);
+    }
 
-// // A function for working with scanf to get a char array more specifically a string
-// void scanning_n_storing_other_stuff()
-// {
-//     int magic_int;
-//     float magic_float;
+    printf("\n");
+    printf("\\\\\\\\\\\\New Modulus \\\\\\\\\\\\\\\\\\\\\\\\\n");
+    printf("\n");
 
-//     printf("What's the magic int'? ");
-//     // this usage of scanf needs the & operator to prefix the variable
-//     scanf("%d", &magic_int);
-//     printf("What's the magic float'? ");
-//     scanf("%f", &magic_float);
+    // const int value =2;
+    value =2;
 
-//     printf("Here is the magic int  <%d>...\n", magic_int);
-//     printf("Here is the magic float  <%f>...\n", magic_float);
-// }
+    printf("Finding numbers divisable by our Modulus which is ... <%d>:\n", value);
+    for (a=0; a<=30; a++)
+    {
+        printf("The remainder of %d / %d is: %d\n", a, value, a % value);
+    }
+}
+
+// A function for storing strings as char arrays
+void rando_gen()
+{
+    int r,a,b;
+    int my_limit = 15;
+
+    printf("Random Numbers under <%d>\n",my_limit);
+    for(a=0; a<10; a++)
+    {
+        for(b=0; b<5; b++)
+        {
+            r = rand() % my_limit; // random number under a limit
+            printf("%02d\t", r);
+        }
+        putchar('\n');
+    }
+
+    printf("Another group of Random Numbers under <%d>\n",my_limit);
+    for(a=0; a<10; a++)
+    {
+        for(b=0; b<5; b++)
+        {
+            r = rand() % my_limit; // random number under a limit
+            printf("%02d\t", r);
+        }
+        putchar('\n');
+    }
+}
+
+// A function for working with scanf to get a char array more specifically a string
+void rando_gen_seeded()
+{
+    int r,a,b;
+    int my_limit = 20;
+    int my_seed = 7;
+
+    printf("Random Numbers under <%d>, with a hardcoded seed of <%d>\n",my_limit, my_seed);
+    srand(my_seed); // seed the random number generator
+    for(a=0; a<10; a++)
+    {
+        for(b=0; b<5; b++)
+        {
+            r = rand() % my_limit; // random number under a limit
+            printf("%02d\t", r);
+        }
+        putchar('\n');
+    }
+
+    printf("Another group of Random Numbers under <%d>, with a hardcoded seed of <%d>\n",my_limit, my_seed);
+    srand(my_seed); // seed the random number generator
+    for(a=0; a<10; a++)
+    {
+        for(b=0; b<5; b++)
+        {
+            r = rand() % my_limit; // random number under a limit
+            printf("%02d\t", r);
+        }
+        putchar('\n');
+    }
+}
+
+// A function for working with scanf to get a char array more specifically a string
+void rando_gen_dynamic_seed()
+{
+    int r,a,b;
+    int my_limit = 20;
+    int my_seed = get_seed();
+
+    printf("Random Numbers under <%d>, with a hardcoded seed of <%d>\n",my_limit, my_seed);
+    srand(my_seed); // seed the random number generator
+    for(a=0; a<10; a++)
+    {
+        for(b=0; b<5; b++)
+        {
+            r = rand() % my_limit; // random number under a limit
+            printf("%02d\t", r);
+        }
+        putchar('\n');
+    }
+
+    my_seed = get_seed();
+    printf("Another group of Random Numbers under <%d>, with a hardcoded seed of <%d>\n",my_limit, my_seed);
+    srand(my_seed); // seed the random number generator
+    for(a=0; a<10; a++)
+    {
+        for(b=0; b<5; b++)
+        {
+            r = rand() % my_limit; // random number under a limit
+            printf("%02d\t", r);
+        }
+        putchar('\n');
+    }
+}
 
 // // A function for working with fgets to storing strings
 // void fgets_4_storing_strings()

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h> 
 
 /*
 To build the program:  Gcc chp12_arrays.c -o .\Debug\chp12_arrays.exe
@@ -17,20 +18,25 @@ void my_new_section(char section_name[]);
 
 // function prototypes for this module
 
-// A function for getting chars
-void get_my_chars();
-// A function for getting chars using getc(stdin)
-// void getc_getting_my_chars();
+// A function for getting a list of score for an array of scores, or a list
+void get_my_array();
+// A function for a prefefined arra
+void pre_defined_array();
 // A function for putting chars using putchar()
-// void putchar_printing_my_chars();
+void pre_defined_array_N_calc();
 // A function for storing strings as char arrays
-// void storing_strings();
+void char_array();
 // A function for using scanf and storing strings as char arrays
-// void scanning_n_storing_strings();
+void filling_an_empty_char_array();
 // A function for working with scanf to get a other varaible types that require the & operator
-// void scanning_n_storing_other_stuff();
+void a_2d_array();
 // A function for working with fgets to storing strings
-// void fgets_4_storing_strings();
+void a_array_of_strings();
+// A function for working with fgets to storing strings
+void array_passing();
+
+void show_array(int array[], int arrary_size);
+void adjust_my_array(int array[], int arrary_size);
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -47,68 +53,81 @@ int main()
     start_n_endprints();
     ////////////////////////////////////////////////
 
-    my_new_section("Getting Characters from User Input, with getchar()");
+    my_new_section("Getting a list of score for an array of scores, or a list");
     enable_feature = 0;
     if (enable_feature)
         {
-            get_my_chars();
+            get_my_array();
+        }
+
+    //////////////////////////////////////////////
+    my_new_section("Getting Characters from User Input, with getc(stdin)");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            pre_defined_array();
         }
 
     ////////////////////////////////////////////////
-    // my_new_section("Getting Characters from User Input, with getc(stdin)");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         getc_getting_my_chars();
-    //     }
+    my_new_section("Using the putchar() function to output chars");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            pre_defined_array_N_calc();
+        }
 
-    // ////////////////////////////////////////////////
-    // my_new_section("Using the putchar() function to output chars");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         putchar_printing_my_chars();
-    //     }
-
-    // ////////////////////////////////////////////////
-    // my_new_section("Storing strings as char arrays");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         storing_strings();
-    //     }
+    ////////////////////////////////////////////////
+    my_new_section("Storing strings as char arrays");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            char_array();
+        }
 
     // ////////////////////////////////////////////////
 
-    // my_new_section("Scanf and Storing strings as char arrays");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         scanning_n_storing_strings();
-    //     }
+    my_new_section("Filling an empty char array with scanf and fgets");
+    enable_feature = 0;
+    if (enable_feature)
+        {
+            filling_an_empty_char_array();
+        }
 
     // ////////////////////////////////////////////////
 
-    // my_new_section("Scanf and Storing other var types");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         scanning_n_storing_other_stuff();
-    //     }
+    my_new_section("2D Arrays");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            a_2d_array();
+        }
 
-    // ////////////////////////////////////////////////
 
-    // my_new_section("fgets to read strings from input");
-    // enable_feature = 1;
-    // if (enable_feature)
-    //     {
-    //         fgets_4_storing_strings();
-    //     }
 
     ////////////////////////////////////////////////
 
+    my_new_section("An array of strings");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            a_array_of_strings();
+        }
+
+    ////////////////////////////////////////////////
+
+    my_new_section("passing arrays to functions");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            array_passing();
+        }
+
     start_n_endprints();
+
+    ////////////////////////////////////////////////
+    
     return 0;
+
 }
 
 
@@ -132,102 +151,223 @@ void my_new_section(char sect_name[])
 /////////////////////////////////////////////////////////////
 
 // A function for getting chars
-void get_my_chars()
+void get_my_array()
 {
-    int my_char;
+    int scores = 10; // number of scores to get
+    int highscores[scores];
+    int x;
 
-    printf("Just waiting for a character: ...  ");
-    my_char = getchar(); // waits for user to input a character
-    printf("You entered:< %c > , Thanks for giving me something!!!\n", my_char);
-    printf("You entered:< %d > , This actual the interger representation of that char you gave me. B)... \n", my_char);
+    for (x =0; x<scores; x++)
+    {
+        printf("Enter score %d: ", x+1);
+        scanf("%d", &highscores[x]);
+    }
+
+    printf("\n");
+    puts("Here are the scores you entered:");
+    printf("\n");
+
+    for (x =0; x<scores; x++)
+    {
+        printf("Score %d: %d\n", x+1, highscores[x]);
+    }
+
 }
 
-// // A function for getting chars using getc(stdin)
-// void getc_getting_my_chars()
-// {
-//     int q;
-//     int w;
-//     int e;
+// A function for getting chars using getc(stdin)
+void pre_defined_array()
+{
+    float closings[] = {24164.95,24107.08,24643.63,24400.93,23728.53};
+    int num_closings = sizeof(closings) / sizeof(closings[0]);
+    int x;
 
-//     printf("Just waiting for a  3 character: ...  ");
-//     getc(stdin); // This will consume the newline character left in the input buffer, otherwise I would miss one of my chars
-//     q = getc(stdin); // waits for user to input a character
-//     w = getc(stdin); // waits for user to input a character
-//     e = getc(stdin); // waits for user to input a character
-//     printf("You entered: < %c > , < %c >, < %c > Thanks for giving me something!!!\n", q,w,e);
-// }
+    printf("\n");
+    puts("Here are the scores you entered:");
+    printf("\n");
 
-// // A function for putting chars using putchar()
-// void putchar_printing_my_chars()
-// {
-//     int ch;
+    for (x =0; x<num_closings; x++)
+    {
+        printf("Score %d: %.2f\n", x+1, closings[x]);
+    }
 
-//     printf("Using putchar to print characters\n");
-//     printf("Press Enter:  ");
-//     getchar(); 
-//     ch = 'H';
-//     putchar(ch);
-//     ch = 'i';
-//     putchar(ch);
-//     ch = '!';
-//     putchar(ch);
-//     putchar('\n');
+}
 
-//     ////////////////////////////////////////////////
-//     my_new_section("char storage and manipulation");
-//     char a,b,c,d;
-//     a = 'W';
-//     b = a + 24;
-//     c = b + 8;
-//     d = '\n';
-//     printf("%c%c%c%c", a,b,c,d);
-// }
+// A function for putting chars using putchar()
+void pre_defined_array_N_calc()
+{
+    // int scores = 2; // number of scores to get
+    float og_nums[] = {10,12,14,15,16,18,20};
+    int numbs = sizeof(og_nums) / sizeof(og_nums[0]); // number of elements in the array
+    float new_nums[numbs];
+    int x;
 
-// // A function for storing strings as char arrays
-// void storing_strings()
-// {
-//     char prompt[] = "Press the 'Enter' key to DESTROY EVERYTHING!!!!!:";
-//     printf("%s\n", prompt);
-//     getchar();
-//     printf("All Hard Drives are now being erased.\nEnjoy the fresh start B)... \n");
-// }
+    for (x =0; x<numbs; x++)
+    {
+        printf("Original Number %d: is <%.2f>\n", x+1, og_nums[x]);
+        // new_nums[x] = og_nums[x] +20;
+        new_nums[x] = sqrt(og_nums[x]);
+        
+    }
 
-// // A function for working with scanf to get a char array more specifically a string
-// void scanning_n_storing_strings()
-// {
-//     char f_name[15];
-//     char l_name[20];
-//     printf("What is your first name? ");
-//     // this usage of scanf when caputing a char array dosent't need the & operator to prefix the variable
-//     scanf("%14s", f_name); // limit input to 14 chars to leave space for null terminator
-//     printf("What is your last name? ");
-//     scanf("%19s", l_name); // limit input to 14 chars to leave space for null terminator
+    printf("\n");
+    puts("Here are the scores you entered:");
+    printf("\n");
 
-//     printf("Nice to meet you <%s %s>...\n", f_name, l_name);
-// }
+    for (x =0; x<numbs; x++)
+    {
+        // printf("Score %d: %.2f\n", x+1, og_nums[x]);
+        printf("Original Number %d: is <%.2f>, the square root of that number is <%.2f>\n", x+1, og_nums[x], new_nums[x]);
+    }
 
-// // A function for working with scanf to get a char array more specifically a string
-// void scanning_n_storing_other_stuff()
-// {
-//     int magic_int;
-//     float magic_float;
+}
 
-//     printf("What's the magic int'? ");
-//     // this usage of scanf needs the & operator to prefix the variable
-//     scanf("%d", &magic_int);
-//     printf("What's the magic float'? ");
-//     scanf("%f", &magic_float);
+// A function for storing strings as char arrays
+void char_array()
+{
+    char statement[] = "Random text";
+    int index = 0;
 
-//     printf("Here is the magic int  <%d>...\n", magic_int);
-//     printf("Here is the magic float  <%f>...\n", magic_float);
-// }
+    while(statement[index] != '\0')
+    {
+        putchar(statement[index]);
+        index++;
 
-// // A function for working with fgets to storing strings
-// void fgets_4_storing_strings()
-// {   
-//     char name[10];
-//     printf("What is your first name? \n");
-//     fgets(name,10,stdin); // If we input a value shorter than 9 chars, it will include the newline char. we should use a dynamic way to get one less than max size to avoid that.
+        // printf("Character at index %d is: %c\n", index, statement[index]);
+        // index++;
+    }
+    putchar('\n');
 
-//     printf("Nice to meet you <%s>...\n", name);
-// }
+    my_new_section("puts(statement)");
+    puts(statement);
+
+    my_new_section("printf(####, statement)");
+    printf("%s\n", statement);
+
+
+}
+
+// A function for working with scanf to get a char array more specifically a string
+void filling_an_empty_char_array()
+{
+    char f_name[15];
+    char l_name[15];
+    printf("What is your first name? ");
+    fgets(f_name,14,stdin);
+    printf("Nice to meet you <%s>...\n", f_name);
+
+    printf("\n");
+    printf("What is your first name? ");
+    scanf("%14s", l_name); // limit input to 14 chars to leave space for null terminator
+    printf("Nice to meet you <%s>...\n", l_name);
+
+    // // this usage of scanf when caputing a char array dosent't need the & operator to prefix the variable
+    // scanf("%14s", f_name); // limit input to 14 chars to leave space for null terminator
+    // printf("What is your last name? ");
+    // scanf("%19s", l_name); // limit input to 14 chars to leave space for null terminator
+
+    // printf("Nice to meet you <%s %s>...\n", f_name, l_name);
+}
+
+// A function for working with scanf to get a char array more specifically a string
+void a_2d_array()
+{
+    char tic_tac_toe[3][3];
+    int row, col;
+
+    // Fill the 2D array with values
+    for (row = 0; row < 3; row++) {
+        for (col = 0; col < 3; col++) {
+            tic_tac_toe[row][col] = '.';
+        }
+        tic_tac_toe[1][1] = 'X';
+    }
+
+    // Print the 2D array
+    printf("Tic Tac Toe Board:\n");
+    for (row = 0; row < 3; row++) 
+    {
+        for(col = 0; col < 3; col++) 
+        {
+            printf("%c ", tic_tac_toe[row][col]);
+        }
+        putchar('\n');
+    }
+    
+}
+
+// A function for working with fgets to storing strings
+void a_array_of_strings()
+{   
+    // int const my_size = 3;
+    /*The compiler thinks size is not a compile‑time constant, so char 
+    caesar[size][10] = {...} is treated as a variable‑length array (VLA). VLAs cannot be 
+    initialized with an initializer list, hence the error.  Fix: make the size a 
+    compile‑time constant (macro or enum) or omit the explicit first dimension. Example change 
+    using an enum constant:*/
+
+    // int const my_size = 3;// this causes an error
+    enum { my_size = 3 };
+    char caesar[my_size][10] = {"Julius", "Augustus", "Nero"};
+    int x, index;
+
+    for(x = 0; x < my_size; x++)
+    {
+        index = 0;
+        // You can print each string character by character like this: But why would you?
+        // while(caesar[x][index] != '\0')
+        //     {
+        //         putchar(caesar[x][index]);
+        //         index++;
+        //     }
+        // putchar('\n');
+
+        // Or you can just use puts to print each string like this:
+        puts(caesar[x]);
+    }
+
+    
+}
+
+// A function for working with fgets to storing strings
+void array_passing()
+{
+   int my_array[] = {2,3,5,7,9,11,13,17,19,21,23,25,27,29,31};
+   int my_array_size = sizeof(my_array) / sizeof(my_array[0]);
+
+   puts("Showing array values passed to a function:");
+   show_array(my_array, my_array_size);
+   adjust_my_array(my_array, my_array_size);
+   show_array(my_array, my_array_size);
+}
+
+
+
+// A function for working with fgets to storing strings
+void show_array(int array[], int arrary_size)
+{
+    // int array_size = sizeof(&array) / sizeof(&array[0]); // This will not work as expected because array decays to a pointer
+    int x;
+
+    printf("\n");
+    printf("Showing the array values this function just recieved\n");
+
+    for (x =0; x < arrary_size; x++)
+    {
+        printf("Value %d: %d\n", x+1, array[x]);
+    }
+}
+
+// A function for working with fgets to storing strings
+void adjust_my_array(int array[], int arrary_size)
+{
+    // int array_size = sizeof(&array) / sizeof(&array[0]); // This will not work as expected because array decays to a pointer
+    int x;
+    printf("\n");
+    printf("Increamenting  the array values this function just recieved, but not showing them here.\n");
+    
+    for (x =0; x < arrary_size; x++)
+    {
+        // printf("Value %d: %d\n", x+1, array[x]);
+        array[x] = array[x] + 10;
+    }
+}

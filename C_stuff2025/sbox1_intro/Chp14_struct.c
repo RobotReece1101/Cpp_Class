@@ -3,8 +3,8 @@
 #include <string.h>
 
 /*
-To build the program:  Gcc Chp14_struct.c -o .\Debug\Chp14_struct.exe
-To run the program:   .\Debug\Chp14_struct.exe
+To build the program:  Gcc chp14_struct.c -o .\Debug\chp14_struct.exe
+To run the program:   .\Debug\chp14_struct.exe
 */
 
 //////////////////////////////////////////////////////////////////////////

@@ -38,6 +38,8 @@ void array_passing();
 void show_array(int array[], int arrary_size);
 void adjust_my_array(int array[], int arrary_size);
 
+void bubble_sorting_an_array();
+
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
@@ -95,8 +97,17 @@ int main()
 
     // ////////////////////////////////////////////////
 
-    my_new_section("2D Arrays");
+    my_new_section("Bubble Sorting an array ");
     enable_feature = 1;
+    if (enable_feature)
+        {
+            bubble_sorting_an_array();
+        }
+
+
+    // ////////////////////////////////////////////////
+    my_new_section("2D Arrays");
+    enable_feature = 0;
     if (enable_feature)
         {
             a_2d_array();
@@ -107,7 +118,7 @@ int main()
     ////////////////////////////////////////////////
 
     my_new_section("An array of strings");
-    enable_feature = 1;
+    enable_feature = 0;
     if (enable_feature)
         {
             a_array_of_strings();
@@ -116,7 +127,7 @@ int main()
     ////////////////////////////////////////////////
 
     my_new_section("passing arrays to functions");
-    enable_feature = 1;
+    enable_feature = 0;
     if (enable_feature)
         {
             array_passing();
@@ -371,3 +382,60 @@ void adjust_my_array(int array[], int arrary_size)
         array[x] = array[x] + 10;
     }
 }
+// A function for sorting an array
+void bubble_sorting_an_array() 
+{
+    // const int size_of_bubble = 6;
+    int bubble[] = {150, 34, 525, 12, 22, 1, 54, 663, 23, 87};
+    const int size_of_bubble = sizeof(bubble) / sizeof(bubble[0]);
+    int inner, outer, temp, x;
+
+    puts ("Original array:");
+    for (x = 0; x < size_of_bubble; x++) 
+    {
+        printf("%d ", bubble[x]);
+    }   
+
+    // Bubble sort algorithm, smallest to largerst
+    for (outer = 0; outer < size_of_bubble - 1; outer++) 
+    {
+        for (inner = 0; inner < size_of_bubble - outer - 1; inner++) 
+        {
+            if (bubble[inner] > bubble[inner + 1]) 
+            {
+                // Swap bubble[inner] and bubble[inner + 1]
+                temp = bubble[inner];
+                bubble[inner] = bubble[inner + 1];
+                bubble[inner + 1] = temp;
+            }
+        }
+    }
+
+    puts ("\nSorted array smallest to largest:");
+    for (x = 0; x < size_of_bubble; x++) 
+    {
+        printf("%d ", bubble[x]);
+    }
+
+        // Bubble sort algorithm, larges to smallest
+    for (outer = 0; outer < size_of_bubble - 1; outer++) 
+    {
+        for (inner = 0; inner < size_of_bubble - outer - 1; inner++) 
+        {
+            if (bubble[inner] < bubble[inner + 1]) 
+            {
+                // Swap bubble[inner] and bubble[inner + 1]
+                temp = bubble[inner];
+                bubble[inner] = bubble[inner + 1];
+                bubble[inner + 1] = temp;
+            }
+        }
+    }
+
+    puts ("\nSorted array largest to smallest:");
+    for (x = 0; x < size_of_bubble; x++) 
+    {
+        printf("%d ", bubble[x]);
+    }
+}
+

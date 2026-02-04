@@ -23,15 +23,18 @@ void size_of_stuff();
 // A function for getting chars using getc(stdin)
 void how_big_is_this_array();
 // A function for putting chars using putchar()
-// void putchar_printing_my_chars();
+void how_big_is_this_struct();
 // A function for storing strings as char arrays
-// void storing_strings();
+void var_locations();
 // A function for using scanf and storing strings as char arrays
-// void scanning_n_storing_strings();
+void mem_location_in_a_array();
 // A function for working with scanf to get a other varaible types that require the & operator
-// void scanning_n_storing_other_stuff();
+void mem_location_of_ints_in_a_array();
 // A function for working with fgets to storing strings
-// void fgets_4_storing_strings();
+void pointer_exp();
+void pointer_exp2();
+void assisn_value_w_pointer_exp();
+void pointer_exp_age_weight();
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -49,7 +52,7 @@ int main()
     ////////////////////////////////////////////////
 
     my_new_section("Getting Characters from User Input, with getchar()");
-    enable_feature = 1;
+    enable_feature = 0;
     if (enable_feature)
         {
             size_of_stuff();
@@ -57,54 +60,81 @@ int main()
 
     ////////////////////////////////////////////////
     my_new_section("Getting Characters from User Input, with getc(stdin)");
-    enable_feature = 1;
+    enable_feature = 0;
     if (enable_feature)
         {
             how_big_is_this_array();
         }
 
-    // ////////////////////////////////////////////////
-    // my_new_section("Using the putchar() function to output chars");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         putchar_printing_my_chars();
-    //     }
+    ////////////////////////////////////////////////
+    my_new_section("Using the putchar() function to output chars");
+    enable_feature = 0;
+    if (enable_feature)
+        {
+            how_big_is_this_struct();
+        }
+
+    ////////////////////////////////////////////////
+    my_new_section("Storing strings as char arrays");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            var_locations();
+        }
+
+    ////////////////////////////////////////////////
+
+    my_new_section("Scanf and Storing strings as char arrays");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            mem_location_in_a_array();
+        }
+
+    ////////////////////////////////////////////////
+
+    my_new_section("Scanf and Storing other var types");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            mem_location_of_ints_in_a_array();
+        }
 
     // ////////////////////////////////////////////////
-    // my_new_section("Storing strings as char arrays");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         storing_strings();
-    //     }
 
-    // ////////////////////////////////////////////////
+    my_new_section("fgets to read strings from input");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            pointer_exp();
+        }
 
-    // my_new_section("Scanf and Storing strings as char arrays");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         scanning_n_storing_strings();
-    //     }
+        // ////////////////////////////////////////////////
 
-    // ////////////////////////////////////////////////
+    my_new_section("fgets to read strings from input");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            pointer_exp2();
+        }
 
-    // my_new_section("Scanf and Storing other var types");
-    // enable_feature = 0;
-    // if (enable_feature)
-    //     {
-    //         scanning_n_storing_other_stuff();
-    //     }
+    ////////////////////////////////////////////////
 
-    // ////////////////////////////////////////////////
+    my_new_section("fgets to read strings from input");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            assisn_value_w_pointer_exp();
+        }
 
-    // my_new_section("fgets to read strings from input");
-    // enable_feature = 1;
-    // if (enable_feature)
-    //     {
-    //         fgets_4_storing_strings();
-    //     }
+    ////////////////////////////////////////////////
+
+    my_new_section("fgets to read strings from input");
+    enable_feature = 1;
+    if (enable_feature)
+        {
+            pointer_exp_age_weight();
+        }
 
     ////////////////////////////////////////////////
 
@@ -169,77 +199,158 @@ void how_big_is_this_array()
     // printf("- strlen -- The length of the array \"%s\" is %u characters.\n\n", my_array2, strlen(my_array2));
 }
 
-// // A function for putting chars using putchar()
-// void putchar_printing_my_chars()
-// {
-//     int ch;
+// A function for putting chars using putchar()
+void how_big_is_this_struct()
+{
+    struct robot {
+        int alive;
+        char name[20];
+        int xpos;
+        int ypos;
+        int strength;
+    };
 
-//     printf("Using putchar to print characters\n");
-//     printf("Press Enter:  ");
-//     getchar(); 
-//     ch = 'H';
-//     putchar(ch);
-//     ch = 'i';
-//     putchar(ch);
-//     ch = '!';
-//     putchar(ch);
-//     putchar('\n');
+        struct robot2 {
+        int alive;
+        char name[5];
+        int xpos;
+        int ypos;
+        int strength;
+    };
 
-//     ////////////////////////////////////////////////
-//     my_new_section("char storage and manipulation");
-//     char a,b,c,d;
-//     a = 'W';
-//     b = a + 24;
-//     c = b + 8;
-//     d = '\n';
-//     printf("%c%c%c%c", a,b,c,d);
-// }
 
-// // A function for storing strings as char arrays
-// void storing_strings()
-// {
-//     char prompt[] = "Press the 'Enter' key to DESTROY EVERYTHING!!!!!:";
-//     printf("%s\n", prompt);
-//     getchar();
-//     printf("All Hard Drives are now being erased.\nEnjoy the fresh start B)... \n");
-// }
 
-// // A function for working with scanf to get a char array more specifically a string
-// void scanning_n_storing_strings()
-// {
-//     char f_name[15];
-//     char l_name[20];
-//     printf("What is your first name? ");
-//     // this usage of scanf when caputing a char array dosent't need the & operator to prefix the variable
-//     scanf("%14s", f_name); // limit input to 14 chars to leave space for null terminator
-//     printf("What is your last name? ");
-//     scanf("%19s", l_name); // limit input to 14 chars to leave space for null terminator
+    printf("The struct named robot size is %lu\n", sizeof(struct robot));
+    printf("The struct named robot2 size is %lu\n", sizeof(struct robot2));
+}
 
-//     printf("Nice to meet you <%s %s>...\n", f_name, l_name);
-// }
+// A function for storing strings as char arrays
+void var_locations()
+{
+    char c = 'c';
+    int i = 123;
+    float f = 98.6;
+    double d = 6.022e23;
 
-// // A function for working with scanf to get a char array more specifically a string
-// void scanning_n_storing_other_stuff()
-// {
-//     int magic_int;
-//     float magic_float;
+    printf("Variable Locations in Memory:\n");
+    printf("Address of char c:      %p\n", &c);
+    printf("Address of int i:       %p\n", &i);
+    printf("Address of float f:     %p\n", &f);
+    printf("Address of double d:    %p\n", &d);
+}
 
-//     printf("What's the magic int'? ");
-//     // this usage of scanf needs the & operator to prefix the variable
-//     scanf("%d", &magic_int);
-//     printf("What's the magic float'? ");
-//     scanf("%f", &magic_float);
+// A function for working with scanf to get a char array more specifically a string
+void mem_location_in_a_array()
+{
+    char hello[] = "Hello, World!";
+    int i = 0;
 
-//     printf("Here is the magic int  <%d>...\n", magic_int);
-//     printf("Here is the magic float  <%f>...\n", magic_float);
-// }
+    while(hello[i]) 
+    {
+        printf("%c at %p\n", hello[i], (void*)&hello[i]);
+        // printf("%c at %p\n", hello[i], &hello[i]);
+        i++;
+    }
 
-// // A function for working with fgets to storing strings
-// void fgets_4_storing_strings()
-// {   
-//     char name[10];
-//     printf("What is your first name? \n");
-//     fgets(name,10,stdin); // If we input a value shorter than 9 chars, it will include the newline char. we should use a dynamic way to get one less than max size to avoid that.
+}
 
-//     printf("Nice to meet you <%s>...\n", name);
-// }
+// A function for working with scanf to get a char array more specifically a string
+void mem_location_of_ints_in_a_array()
+{
+    int phone_numb[] = {4,0,7,8,1,78,9,5,2,3};
+    int phone_numb_size = sizeof(phone_numb) / sizeof(phone_numb[0]);
+    int i = 0;
+
+    for(i = 0; i < phone_numb_size; i++)
+    {
+        printf("%d at %p\n", phone_numb[i], (void*)&phone_numb[i]);
+        // printf("%c at %p\n", hello[i], &hello[i]);
+        // i++;
+    }
+}
+
+// A function for working with fgets to storing strings
+void pointer_exp()
+{   
+    char lead;
+    char *sidekick;
+
+    lead = 'A';
+    sidekick = &lead;
+
+    printf("About variable 'lead': \n");
+    printf("Size \t\t%zd\n", sizeof(lead));
+    printf("Contents \t%c\n", lead);
+    printf("Location: \t%p\n", &lead);
+
+    printf("About variable 'sidekick': \n");
+    // printf("Size \t\t%zd\n", sizeof(lead));
+    printf("Contents \t%p\n", sidekick);
+    printf("Peek value \t%c\n", *sidekick);
+
+
+
+}
+
+// A function for working with fgets to storing strings
+void pointer_exp2()
+{   
+    char a,b,c;
+    char *p;
+
+    a = 'A';
+    b = 'B';
+    c = 'C';
+
+
+    printf("Know your.... \n");
+    p = &a;
+    putchar(*p);
+    p = &b;
+    putchar(*p);
+    p = &c;
+    putchar(*p);
+    printf("s\n");
+}
+
+// A function for working with fgets to storing strings
+void assisn_value_w_pointer_exp()
+{   
+    char a,b,c;
+    char *p;
+
+    p = &a;
+    *p = 'A';
+    p = &b;
+    *p = 'B';
+    p = &c;
+    *p = 'C';
+
+    printf("Know your.... \n");
+    p = &a;
+    putchar(*p);
+    p = &b;
+    putchar(*p);
+    p = &c;
+    putchar(*p);
+    printf("s\n");
+}
+
+// A function for working with fgets to storing strings
+void pointer_exp_age_weight()
+{   
+    int age;
+    float weight;
+    int *p_age;
+    float *p_weight;
+
+    p_age = &age;
+    *p_age = 42;
+    p_weight = &weight;
+    *p_weight = 175.7;
+
+
+
+    printf("Reece your age is .<%d>... \n",age);
+    printf("Reece your weight is...<%f>... \n",weight);
+}
